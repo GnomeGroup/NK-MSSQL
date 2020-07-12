@@ -24,17 +24,17 @@ const mssqlDBJSObject = {
 			callback( [] )
 		}
 	},
-	start: async ( dbName, ip, port, user, pass, timeoutInMS, callback ) => {
-		try	{
-			mssqlDBJSObject.databaseList[dbName] = await mssql.connect( 'mssql://' + ( user? escape( user ): '' ) + ( ( user && pass )? ':': '' ) + ( pass? escape( pass ): '' ) + ( ( user || pass )? '@': '' ) + escape( ip ) + ':' + parseInt( port ).toString() + '/' + escape( dbName ) )
+	start: ( dbName, ip, port, user, pass, timeoutInMS, callback ) => {
+		mssql.connect( { user: user, password: pass, server: ip, database: dbName, port: port, connectionTimeout: timeoutInMS } ).then( serverConnection => {
+			mssqlDBJSObject.databaseList[dbName] = serverConnection
 			if( mssqlDBJSObject.databaseList[dbName] )  {
 				callback( false, null )
 			}	else	{
 				callback( true, 'cannot connect' )
 			}
-		}	catch( e )	{
-			callback( true, e )
-		}
+		}).catch( err => {
+			callback( true, err )
+		})
 	},
 	insert: ( dbName, table, rowOrRows, callback ) => mssqlDBJSObject.run( dbName, NKSQL.insert( table, rowOrRows ), callback ),
 	delete: ( dbName, table, dataToRemove, callback ) => mssqlDBJSObject.run( dbName, NKSQL.delete( table, dataToRemove ), callback ),

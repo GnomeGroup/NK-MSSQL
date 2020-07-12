@@ -1,6 +1,6 @@
 {
   "name": "@encke/nk-mssql",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MSSQL Connection Class for the NK Node Package",
   "main": "mssql.js",
   "scripts": {

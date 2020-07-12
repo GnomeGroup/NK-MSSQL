@@ -25,11 +25,15 @@ const mssqlDBJSObject = {
 		}
 	},
 	start: async ( dbName, ip, port, user, pass, timeoutInMS, callback ) => {
-		mssqlDBJSObject.databaseList[dbName] = await mssql.connect( 'mssql://' + ( user? escape( user ): '' ) + ( ( user && pass )? ':': '' ) + ( pass? escape( pass ): '' ) + ( ( user || pass )? '@': '' ) + escape( ip ) + ':' + parseInt( port ).toString() + '/' + escape( dbName ) )
-		if( mssqlDBJSObject.databaseList[dbName] )  {
-			callback( false, null )
-		}	else	{
-			callback( true, 'cannot connect' )
+		try	{
+			mssqlDBJSObject.databaseList[dbName] = await mssql.connect( 'mssql://' + ( user? escape( user ): '' ) + ( ( user && pass )? ':': '' ) + ( pass? escape( pass ): '' ) + ( ( user || pass )? '@': '' ) + escape( ip ) + ':' + parseInt( port ).toString() + '/' + escape( dbName ) )
+			if( mssqlDBJSObject.databaseList[dbName] )  {
+				callback( false, null )
+			}	else	{
+				callback( true, 'cannot connect' )
+			}
+		}	catch( e )	{
+			callback( true, e )
 		}
 	},
 	insert: ( dbName, table, rowOrRows, callback ) => mssqlDBJSObject.run( dbName, NKSQL.insert( table, rowOrRows ), callback ),

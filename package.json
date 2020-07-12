@@ -1,6 +1,6 @@
 {
   "name": "@encke/nk-mssql",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "MSSQL Connection Class for the NK Node Package",
   "main": "mssql.js",
   "scripts": {
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/Encke/NK-MSSQL#readme",
   "dependencies": {
     "mssql": "^6.2.0",
-    "@encke/nk-sql-builder": "1.0.3"
+    "@encke/nk-sql-builder": "1.0.4"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

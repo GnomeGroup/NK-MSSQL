@@ -16,7 +16,7 @@ MSSQL is the Industry leader of Relational Database with Error Protection
 
 ### Start and connect to server
 ```node
-const NKMSSQL = require( '@encke/nk-mysql' )
+const NKMSSQL = require( '@encke/nk-mssql' )
 //                  dbName,         ip,   port, user, pass, timeoutInMS, callback
 NKMSSQL.start( 'MyDatabase', '127.0.0.1', 1433, null, null, null, ( isError, errorMessage ) => {
   //Super duper awesome code here!

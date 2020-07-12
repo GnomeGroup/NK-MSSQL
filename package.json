@@ -1,0 +1,26 @@
+{
+  "name": "nk-mssql",
+  "version": "1.0.0",
+  "description": "MSSQL Connection Class for the NK Node Package",
+  "main": "mssql.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Encke/NK-MSSQL.git"
+  },
+  "author": "Encke Technologies SRL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Encke/NK-MSSQL/issues"
+  },
+  "homepage": "https://github.com/Encke/NK-MSSQL#readme",
+  "dependencies": {
+    "mssql": "^6.2.0",
+    "@encke/nk-sql-builder": "1.0.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

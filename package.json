@@ -18,7 +18,7 @@
   "homepage": "https://github.com/Encke/NK-MSSQL#readme",
   "dependencies": {
     "mssql": "^6.2.0",
-    "@encke/nk-sql-builder": "1.0.4"
+    "@encke/nk-mssql-builder": "1.0.0"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"

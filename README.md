@@ -27,7 +27,7 @@ The database connection object is saved in the NKMSSQL Object, indexed by the da
 
 ### Start and connect to multiple servers
 ```node
-const NKMSSQL = require( 'nk-mongo' )
+const NKMSSQL = require( 'nk-mssql' )
 NKMSSQL.start( 'MyDatabase', '127.0.0.1', 1433, null, null, null, ( isError1, errorMessage1 ) => NKMSSQL.start( 'RemoteDB1', 'remote.mydomain.com', 1433, null, null, null, ( isError2, errorMessage2 ) => NKMSSQL.start( 'RemoteDB2', 'remote2.mydomain.com', 1433, null, null, null, ( isError3, errorMessage3 ) => {
   console.log( isError1, errorMessage1, isError2, errorMessage2, isError3, errorMessage3 )
   //WHAT?! Yes, you can connect to multiple servers in the same core, using them as objects for real-time compliances

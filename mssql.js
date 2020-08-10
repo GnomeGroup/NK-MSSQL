@@ -1,5 +1,5 @@
 const mssql		=	require( 'mssql' )
-const NKSQL = require( '@encke/nk-mssql-builder' )
+const NKSQL = require( 'nk-mssql-builder' )
 
 const mssqlDBJSObject = {
 	db: null,

@@ -22,8 +22,8 @@ const mssqlDBJSObject = {
 			callback( [] )
 		}
 	},
-	start: ( dbName, ip, port, user, pass, timeoutInMS, callback ) => {
-		mssql.connect( { user: user, password: pass, server: ip, database: dbName, port: port, connectionTimeout: timeoutInMS, options: { enableArithAbort: true } } ).then( serverConnection => {
+	start: ( dbName, ip, port, user, pass, timeoutInMS, encryptConnection, callback ) => {
+		mssql.connect( { user: user, password: pass, server: ip, database: dbName, port: port, connectionTimeout: timeoutInMS, requestTimeout: timeoutInMS, options: { enableArithAbort: true, encrypt: encryptConnection } } ).then( serverConnection => {
 			mssqlDBJSObject.databaseList[dbName] = serverConnection
 			if( mssqlDBJSObject.databaseList[dbName] )  {
 				callback( false, null )

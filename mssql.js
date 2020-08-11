@@ -13,18 +13,18 @@ const mssqlDBJSObject = {
 	run: ( dbName, sql, callback ) => {
 		if( mssqlDBJSObject.databaseList[dbName] )  {
 			mssqlDBJSObject.databaseList[dbName].query( sql )
-				.then( result => {
-					if( !result.err && result.res.recordsets )	{
-						callback( result.res.recordsets[0], null )
+				.then( res => {
+					if( res.recordsets )	{
+						callback( res.recordsets[0], null )
 					} else {
 						callback( [], null )
 					}
 				})
 				.catch( err => {
-					callback( [], err )
+					callback( [], ( ( err && err.originalError && err.originalError.info && err.originalError.info.message )? err.originalError.info.message: err ) )
 				})
 		} else {
-			callback( [], null )
+			callback( [], 'No Database Connected' )
 		}
 	},
 	start: ( dbName, ip, port, user, pass, timeoutInMS, encryptConnection, callback ) => {

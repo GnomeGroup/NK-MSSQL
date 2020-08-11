@@ -6,8 +6,7 @@ MSSQL Connection Class for the NK Node Package
 Install using NPM
 
 ```bash
-echo "registry=https://npm.pkg.github.com/Encke" >> .npmrc
-npm i @encke/nk-mssql --save
+npm i nk-mssql --save
 ```
 
 ## How to use
@@ -16,9 +15,9 @@ MSSQL is the Industry leader of Relational Database with Error Protection
 
 ### Start and connect to server
 ```node
-const NKMSSQL = require( '@encke/nk-mssql' )
-//                  dbName,         ip,   port, user, pass, timeoutInMS, callback
-NKMSSQL.start( 'MyDatabase', '127.0.0.1', 1433, null, null, null, ( isError, errorMessage ) => {
+const NKMSSQL = require( 'nk-mssql' )
+//                  dbName,         ip,   port, instance, user, pass, timeoutInMS, useEncryptedConnection, callback
+NKMSSQL.start( 'MyDatabase', '127.0.0.1', 1433, null, null, null, null, true, ( isError, errorMessage ) => {
   //Super duper awesome code here!
   console.log( isError, errorMessage )
 })
